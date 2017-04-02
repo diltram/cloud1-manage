@@ -1,0 +1,5 @@
+---
+- name: configure bastion Cloud1 server
+  hosts: remote
+  roles:
+    - users

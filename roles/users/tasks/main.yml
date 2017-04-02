@@ -1,0 +1,21 @@
+---
+
+- name: create user accounts
+  user:
+    name: '{{ item.name }}'
+  with_items:
+    - '{{ users }}'
+  become: true
+  tags:
+    - users
+
+- name: configure users ssh keys
+  authorized_key:
+    user: '{{ item.name }}'
+    state: present
+    key: '{{ item.ssh_key }}'
+  with_items:
+    - '{{ users }}'
+  become: true
+  tags:
+    - users

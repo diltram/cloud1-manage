@@ -1,0 +1,17 @@
+---
+
+- name: find prefixed servers
+  shell: |
+    openstack server list --name '{{ prefix }}' -c ID --quote none -fcsv \
+      | tail -n+2
+  register: servers
+  changed_when: servers.stdout | trim != ""
+  tags:
+    - blacklist
+
+- name: remove all servers with specified prefix
+  shell: |
+    openstack server delete $(echo '{{ servers.stdout }}')
+  when: servers.stdout | trim != ""
+  tags:
+    - blacklist

@@ -17,8 +17,6 @@ servers belonging to specific user. The whole procedure is based on the prefix
 so always be sure that you will not delete someone elses servers by specifying
 too short prefix.
 
-Code required to execute the operation:
-
-.. code bash::
+Code required to execute the operation::
 
    ansible-playbook site.yml -t blacklist -e prefix=$SOME_PREFIX

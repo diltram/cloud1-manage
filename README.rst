@@ -19,6 +19,6 @@ too short prefix.
 
 Code required to execute the operation:
 
-.. code bash:
+.. code bash::
 
    ansible-playbook site.yml -t blacklist -e prefix=$SOME_PREFIX

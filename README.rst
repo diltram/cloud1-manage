@@ -3,10 +3,11 @@ Ansible configuration file used for managing Cloud1
 ###################################################
 
 This Ansible project was created to cover this things:
-1. Manage Cloud1 floating IPs
-2. Allow to delete all servers belonging to specific user (based on prefix)
-3. Add new user accounts and ssh keys in Bastion server which allows us to spare
-   IPv4 addresses.
+
+* Manage Cloud1 floating IPs
+* Allow to delete all servers belonging to specific user (based on prefix)
+* Add new user accounts and ssh keys in Bastion server which allows us to spare
+  IPv4 addresses.
 
 How to delete all servers based on prefix
 =========================================

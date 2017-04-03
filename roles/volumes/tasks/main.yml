@@ -1,0 +1,19 @@
+---
+
+- name: find volumes required to be deleted
+  shell: |
+    openstack volume list --status error -c ID -fcsv \
+      | tail -n+2
+  register: volumes
+  changed_when: volumes.stdout | trim != ""
+  tags:
+    - volumes
+
+- name: delete all volumes in error state
+  shell: |
+    openstack volume delete $(echo '{{ volumes.stdout }}')
+  register: rm_volumes
+  changed_when: rm_volumes.stdout | trim == ""
+  when: volumes.stdout | trim != ""
+  tags:
+    - volumes

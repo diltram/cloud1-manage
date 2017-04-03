@@ -2,5 +2,6 @@
 - name: cleanup Cloud1 environment using OpenStack client
   hosts: localhost
   roles:
-    - floating_ips
     - { role: servers, when: prefix is defined }
+    - floating_ips
+    - volumes
